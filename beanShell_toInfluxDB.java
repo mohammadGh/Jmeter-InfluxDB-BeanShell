@@ -63,6 +63,8 @@ result.append("samples,")
 .append(sampleResult.getBytesAsLong())
 .append(",send=")
 .append(sampleResult.getSentBytes())
+.append(",tstamp=")
+.append(sampleResult.getTimeStamp())  
 .append( " ")
 .append(sampleResult.getTimeStamp())
 .append("000000");
