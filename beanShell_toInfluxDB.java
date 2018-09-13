@@ -7,9 +7,9 @@ import org.apache.http.util.EntityUtils;
 
 //Escape the string values before posting the data
 String escapeValue(String val){
-val = val.replaceAll(",", "\\\\,")
-.replaceAll(" ", "\\\\ ")
-.replaceAll("=", "\\\\=")
+val = val.replaceAll(",", "\\,")
+.replaceAll(" ", "\\ ")
+.replaceAll("=", "\\=")
 .trim();
 return val;
 }
@@ -35,9 +35,9 @@ result.append("samples,")
 .append("tag=")
 .append("${myTag}")
 .append(",label=")
-.append(sampleResult.getSampleLabel())
+.append(escapeValue(sampleResult.getSampleLabel()))
 .append(",thread=")
-.append(sampleResult.getThreadName().replace(" ","_"))
+.append(escapeValue(sampleResult.getThreadName()))
 .append(",status=")
 .append(status)
 .append(" ")
@@ -64,7 +64,8 @@ result.append("samples,")
 .append(",send=")
 .append(sampleResult.getSentBytes())
 .append(",tstamp=")
-.append(sampleResult.getTimeStamp())  
+.append(sampleResult.getTimeStamp()) 
+..append("000000")
 .append( " ")
 .append(sampleResult.getTimeStamp())
 .append("000000");
